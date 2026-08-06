@@ -85,13 +85,31 @@
             </a>
         </nav>
 
-            <!-- Button -->
-            <a href="#contact"
-                class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-amber-500 text-white px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                <i class="fa-solid fa-paper-plane"></i>
-                Hubungi Saya
-            </a>
+            <div class="flex items-center gap-3">
+                <button id="mobileMenuButton" type="button" onclick="toggleMobileMenu()"
+                    class="md:hidden inline-flex items-center justify-center rounded-full bg-slate-100 text-slate-700 p-3 hover:bg-slate-200 transition">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                    <span class="sr-only">Buka menu</span>
+                </button>
+
+                <a href="#contact"
+                    class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-amber-500 text-white px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Hubungi Saya
+                </a>
+            </div>
         </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden mt-3 rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden">
+        <nav class="flex flex-col gap-1 p-4">
+            <a href="#about" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-700 hover:text-gold-500 transition py-3 px-3 rounded-lg">Tentang Saya</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-700 hover:text-gold-500 transition py-3 px-3 rounded-lg">Pengalaman</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-700 hover:text-gold-500 transition py-3 px-3 rounded-lg">Portofolio</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-700 hover:text-gold-500 transition py-3 px-3 rounded-lg">Keahlian</a>
+            <a href="#education" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-700 hover:text-gold-500 transition py-3 px-3 rounded-lg">Pendidikan</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-700 hover:text-gold-500 transition py-3 px-3 rounded-lg">Kontak</a>
+        </nav>
     </div>
 </header>
 
@@ -1318,6 +1336,20 @@ AOS.init({
     once: false,
     easing: 'ease-out',
     offset: 80
+});
+
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+}
+
+window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) {
+        const menu = document.getElementById('mobileMenu');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+        }
+    }
 });
 </script>
 
